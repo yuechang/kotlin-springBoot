@@ -1,0 +1,111 @@
+buildscript {
+	ext {
+		kotlin_version = '1.1.3-2'
+		springboot_version = '1.5.2.RELEASE'
+
+		//kotlin_version = '1.1.4'
+		//springboot_version = '1.5.6.RELEASE'
+		jcaptcha_version = '1.0'
+		commons_lang3_version = '3.4'
+		httpcomponents_version = '4.5.1'
+		commons_io_version = '2.4'
+		emoji_java_version = '3.3.0'
+		jxl_version = '2.6.12'
+		commons_beanutils_version = '1.9.2'
+		ant_core_version = '1.9.7'
+		poi_version = '3.12'
+		zxing_version = '3.3.0'
+		guava_version = '18.0'
+		xstream_version = '1.4.8'
+		springboot_mybatis_version = '1.3.0'
+		commons_file_upload_version = '1.3.1'
+		shiro_core_version = '1.2.4'
+	}
+	repositories {
+		//jcenter()
+		mavenLocal()
+		maven {url 'http://maven.aliyun.com/nexus/content/groups/public'}
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+		/*
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		*/
+	}
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+//apply plugin: 'spring-boot'
+apply plugin: 'maven'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+compileKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+
+repositories {
+	//jcenter()
+	mavenLocal()
+	maven {url 'http://maven.aliyun.com/nexus/content/groups/public'}
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-web:$springboot_version"){
+		exclude module: "spring-boot-starter-tomcat"
+	}
+	compile "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
+	compile "org.springframework.boot:spring-boot-starter-mail:$springboot_version"
+	compile "org.springframework.boot:spring-boot-starter-freemarker:$springboot_version"
+	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$springboot_mybatis_version"
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+	compile("mysql:mysql-connector-java:5.1.13")
+/*
+
+	compile "com.octo.captcha:jcaptcha:$jcaptcha_version"
+	compile "org.apache.commons:commons-lang3:$commons_lang3_version"
+	compile "org.apache.httpcomponents:httpclient:$httpcomponents_version"
+	compile "org.apache.httpcomponents:httpmime:$httpcomponents_version"
+	compile "commons-io:commons-io:$commons_io_version"
+	compile "com.vdurmont:emoji-java:$emoji_java_version"
+	compile (group: 'net.sourceforge.jexcelapi', name: 'jxl', version: "$jxl_version") {
+		exclude group: 'log4j', module: 'log4j'
+	}
+	compile "commons-beanutils:commons-beanutils:$commons_beanutils_version"
+	compile "org.apache.ant:ant:$ant_core_version"
+	compile "org.apache.poi:poi:$poi_version"
+	compile "org.apache.poi:poi-ooxml:$poi_version"
+	compile "com.google.zxing:core:$zxing_version"
+	compile "com.google.zxing:javase:$zxing_version"
+	compile "com.google.guava:guava:$guava_version"
+	compile "com.thoughtworks.xstream:xstream:$xstream_version"
+	compile(group: 'commons-fileupload', name: 'commons-fileupload', version: "$commons_file_upload_version") {
+		exclude group: 'commons-io', module: 'commons-io'
+	}
+	compile "org.apache.shiro:shiro-core:$shiro_core_version"
+*/
+
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.0'
+}
+
+def LOCAL_REPO_URL = "C:\\Users\\Administrator\\.m2\\repository"
+
+uploadArchives {
+	repositories.mavenDeployer {
+		repository(url: LOCAL_REPO_URL)
+	}
+}
