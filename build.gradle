@@ -2,9 +2,6 @@ buildscript {
 	ext {
 		kotlin_version = '1.1.3-2'
 		springboot_version = '1.5.2.RELEASE'
-
-		//kotlin_version = '1.1.4'
-		//springboot_version = '1.5.6.RELEASE'
 		jcaptcha_version = '1.0'
 		commons_lang3_version = '3.4'
 		httpcomponents_version = '4.5.1'
@@ -28,12 +25,6 @@ buildscript {
 	}
 	dependencies {
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-		/*
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-		*/
 	}
 }
 
@@ -59,7 +50,6 @@ repositories {
 	maven {url 'http://maven.aliyun.com/nexus/content/groups/public'}
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.boot:spring-boot-starter-web:$springboot_version"){
@@ -71,31 +61,6 @@ dependencies {
 	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$springboot_mybatis_version"
 	compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 	compile("mysql:mysql-connector-java:5.1.13")
-/*
-
-	compile "com.octo.captcha:jcaptcha:$jcaptcha_version"
-	compile "org.apache.commons:commons-lang3:$commons_lang3_version"
-	compile "org.apache.httpcomponents:httpclient:$httpcomponents_version"
-	compile "org.apache.httpcomponents:httpmime:$httpcomponents_version"
-	compile "commons-io:commons-io:$commons_io_version"
-	compile "com.vdurmont:emoji-java:$emoji_java_version"
-	compile (group: 'net.sourceforge.jexcelapi', name: 'jxl', version: "$jxl_version") {
-		exclude group: 'log4j', module: 'log4j'
-	}
-	compile "commons-beanutils:commons-beanutils:$commons_beanutils_version"
-	compile "org.apache.ant:ant:$ant_core_version"
-	compile "org.apache.poi:poi:$poi_version"
-	compile "org.apache.poi:poi-ooxml:$poi_version"
-	compile "com.google.zxing:core:$zxing_version"
-	compile "com.google.zxing:javase:$zxing_version"
-	compile "com.google.guava:guava:$guava_version"
-	compile "com.thoughtworks.xstream:xstream:$xstream_version"
-	compile(group: 'commons-fileupload', name: 'commons-fileupload', version: "$commons_file_upload_version") {
-		exclude group: 'commons-io', module: 'commons-io'
-	}
-	compile "org.apache.shiro:shiro-core:$shiro_core_version"
-*/
-
 }
 
 task wrapper(type: Wrapper) {
