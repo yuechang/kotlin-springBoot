@@ -61,6 +61,13 @@ dependencies {
 	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$springboot_mybatis_version"
 	compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 	compile("mysql:mysql-connector-java:5.1.13")
+	compile("org.apache.commons:commons-lang3:3.6")
+	compile("com.maxmind.geoip2:geoip2:2.9.0")
+
+	compile("redis.clients:jedis:2.9.0")
+	compile("net.sourceforge.javacsv:javacsv:2.0")
+	compile("org.apache.commons:commons-csv:1.4")
+	compile("com.google.code.gson:gson:2.8.0")
 }
 
 task wrapper(type: Wrapper) {
